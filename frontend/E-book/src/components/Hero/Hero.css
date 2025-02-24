@@ -1,90 +1,27 @@
-/* Hero.css */
-.hero-section {
-  background: #fefefe;
-  padding: 3rem 2rem;
-  display: flex;
-  justify-content: center;
-}
+@import "tailwindcss";
 
-.hero-inner {
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0 auto;
-  position: relative;
-}
-
-.hero-text, .hero-image-container {
-  flex: 1 1 50%;
-  min-width: 300px;
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-/* Smaller screen stacking */
-@media (max-width: 768px) {
-  .hero-text, .hero-image-container {
-    flex: 1 1 100%;
-    text-align: center;
-    margin-bottom: 2rem;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-.hero-title-small {
-  display: block;
-  font-size: 1rem;
-  color: #8a8a8a;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.hero-main-heading {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: #333;
-  font-family: "Poppins", sans-serif;
-}
-
-.hero-subtext {
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  color: #555;
-}
-
-.hero-button {
-  background: linear-gradient(to right, #ffca28, #ffa000);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: #333;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  transition: box-shadow 0.3s ease;
-}
-
-.hero-button:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Hero Image */
-.hero-image-container img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 0.5rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Simple fade-up animation with CSS keyframes */
-@keyframes fadeInUp {
-  0% {
-    transform: translateY(40px);
-    opacity: 0;
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0);
   }
-  100% {
-    transform: none;
-    opacity: 1;
+  50% {
+    transform: translateY(10px);
   }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 4s ease-in-out infinite;
 }

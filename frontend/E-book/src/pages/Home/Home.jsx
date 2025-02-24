@@ -4,6 +4,8 @@ import './Home.css'
 import Navbar from '../../components/Navbar/Navbar'
 import Hero from "../../components/Hero/Hero";
 import Benifits from '../../components/Benfits/Benifits';
+import Footer from '../../components/Footer/Footer';
+import Chapters from '../../components/Chapters/Chapters';
 
 const Home = () => {
   return (
@@ -12,11 +14,11 @@ const Home = () => {
       <Navbar />
       <Hero/>
       <Benifits/> 
-      {/* <Features/>
+      {/* <Features/> */}
       <Chapters/>
-      <Achievements/>
-      <Contact/>
-      <Footer/> */}
+      {/* <Achievements/>
+      <Contact/> */}
+      <Footer/>
     </div>
     </div>
   )
