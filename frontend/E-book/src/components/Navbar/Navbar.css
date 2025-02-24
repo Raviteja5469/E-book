@@ -1,94 +1,88 @@
-* {
-    background-color: #F8F2ED;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Navbar.css */
 .navbar-container {
-    width: 100%;
-    margin: 30px auto 0;
-    background-color: #F8F2ED;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 0 1rem;
-}
-
-.navbar-content {
-    background-color: white;
-    max-width: 82%;
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(to right, #4b5d67, #1b2a35);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .navbar-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    border-radius: 0.5rem;
-}
-
-.brand-name {
-    background-color: white;
-    font-weight: 700;
+    padding: 0.75rem 2rem;
+    color: #fff;
+  }
+  
+  /* Brand */
+  .brand-name {
     font-size: 1.5rem;
-    color: #333;
-}
-
-/* Desktop nav */
-.navbar-links {
-    background-color: white;
-    display: flex;
-    gap: 2rem;
-}
-
-.navbar-links a {
-    background-color: white;
-    color: #666;
-    text-decoration: none;
-    transition: color 0.2s;
-    font-size: 1rem;
-}
-
-.navbar-links a:hover {
-    color: #000;
-}
-
-/* Mobile nav toggle */
-.menu-button {
-    display: none;
+    font-weight: 600;
+  }
+  
+  /* Menu toggle (mobile) */
+  .menu-button {
     background: none;
     border: none;
+    color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .menu-button {
-        display: block;
-    }
-
-    .navbar-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 1.5rem;
-        background-color: #fff;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        flex-direction: column;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        gap: 1rem;
-        min-width: 150px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .navbar-links.mobile-open {
-        display: flex;
-    }
-}
-
-/* Simple icons styled */
-.burger-icon,
-.close-icon {
+    outline: none;
+  }
+  
+  /* Navbar links container */
+  .navbar-links {
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  /* Hover effect for links */
+  .navbar-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #ffca28; /* accent color */
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* Mobile-friendly styles */
+  .mobile-open {
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+    flex-direction: column;
+    background: #fff;
+    color: #333;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .mobile-open a {
+    color: #333;
+    margin: 0.5rem 0;
+  }
+  
+  /* Close and burger icon styling if needed */
+  .close-icon, .burger-icon {
     font-size: 1.5rem;
-    line-height: 1.25rem;
-}
+    transition: transform 0.3s;
+  }
+  
