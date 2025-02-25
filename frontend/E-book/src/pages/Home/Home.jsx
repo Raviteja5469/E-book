@@ -8,6 +8,7 @@ import Footer from '../../components/Footer/Footer';
 import Chapters from '../../components/Chapters/Chapters';
 import Pricing from '../../components/Pricing/Pricing';
 import Authors from '../../components/Authors/Autors';
+import Achievements from '../../components/Achievements/Achievements';
 
 const Home = () => {
   return (
@@ -18,8 +19,9 @@ const Home = () => {
       <Benifits/> 
       {/* <Features/> */}
       <Chapters/>
-      {/* <Achievements/>
+      {/* 
       <Contact/> */}
+      <Achievements/>
       <Pricing/>  
       <Authors/>
       <Footer/>
