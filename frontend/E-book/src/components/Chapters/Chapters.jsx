@@ -69,7 +69,7 @@ export function Chapters() {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <h2 className="text-4xl lg:text-5xl font-extrabold text-center text-yellow-500 mb-12">
-          Featured Chapters
+          Featured Books
         </h2>
 
         {/* React-Slick Slider */}
