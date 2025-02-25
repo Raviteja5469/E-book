@@ -1,7 +1,7 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/swiper-bundle.min.css";
+import Slider from "react-slick"; // React-Slick for the slider
+import "slick-carousel/slick/slick.css"; // Core slick styles
+import "slick-carousel/slick/slick-theme.css"; // Default slick theme styles
 
 // Example data for books
 const books = [
@@ -43,6 +43,27 @@ const books = [
 ];
 
 export function Chapters() {
+  // React-Slick slider settings
+  const settings = {
+    dots: true, // Enable navigation dots
+    infinite: true, // Infinite scrolling
+    speed: 500, // Transition speed
+    slidesToShow: 3, // Number of slides to show (desktop)
+    slidesToScroll: 1, // Slides to scroll per click
+    autoplay: true, // Automatically scroll slides
+    autoplaySpeed: 3000, // Autoplay interval
+    responsive: [
+      {
+        breakpoint: 1024, // Breakpoint for tablets
+        settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 640, // Breakpoint for mobile
+        settings: { slidesToShow: 1 },
+      },
+    ],
+  };
+
   return (
     <section className="bg-gradient-to-b from-blue-900 via-gray-900 to-black py-16 px-6 lg:px-20 text-white">
       <div className="max-w-7xl mx-auto">
@@ -51,24 +72,10 @@ export function Chapters() {
           Featured Chapters
         </h2>
 
-        {/* Swiper Slider */}
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop={true}
-          spaceBetween={30}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="rounded-lg"
-        >
+        {/* Slick Slider */}
+        <Slider {...settings}>
           {books.map((book) => (
-            <SwiperSlide key={book.id} className="text-center">
+            <div key={book.id} className="px-4">
               {/* Book Card */}
               <div className="flex flex-col items-center bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <img
@@ -83,9 +90,9 @@ export function Chapters() {
                   <p className="text-gray-300">{book.description}</p>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </Slider>
       </div>
     </section>
   );
