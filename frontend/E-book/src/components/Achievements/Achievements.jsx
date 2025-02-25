@@ -78,14 +78,21 @@ const Achievements = () => {
             </div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <button 
+        <div className="mt-16 bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-purple-500/10 blur-sm"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
+            <div className="text-center md:text-left mb-8 md:mb-0">
+              <h3 className="text-2xl font-bold text-white mb-2">Honored by the Literary Guild</h3>
+              <p className="text-gray-300">Our publication received the prestigious Excellence in Literature award for 2024</p>
+            </div>
+            <button 
             onClick={() => navigate("/honors")}
-            className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold rounded-full hover:shadow-lg hover:shadow-yellow-500/20 transform hover:scale-105 transition-all duration-200"
-          >
-            View All Honors
-          </button>
+            className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-bold rounded-full hover:shadow-lg hover:shadow-yellow-500/20 transform hover:scale-105 transition-all duration-200">
+              View All Honors
+            </button>
+          </div>
         </div>
+        
       </div>
     </section>
   );
