@@ -117,5 +117,4 @@ export function Chapters() {
     </section>
   );
 }
-
 export default Chapters;
