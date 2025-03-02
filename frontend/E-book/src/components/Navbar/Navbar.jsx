@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/images/logo.webp";
-
+{/* functions */}
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
