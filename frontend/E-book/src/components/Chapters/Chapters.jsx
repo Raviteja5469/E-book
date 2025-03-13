@@ -65,21 +65,22 @@ export function Chapters() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-blue-900 via-gray-900 to-black py-16 px-6 lg:px-20 text-white">
+    <section className="bg-gradient-to-b  bg-slate-900, bg-slate-800 py-16 px-6 lg:px-20 text-slate-200">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <h2 className="text-4xl lg:text-5xl font-extrabold text-center text-yellow-500 mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-sky-400 text-center mb-12">
           Featured Books
         </h2>
 
         {/* React-Slick Slider */}
         <Slider {...settings}>
           {books.map((book) => (
-            <div key={book.id} className="px-6">
+            <div key={book.id} className="px-4">
               {/* Enhanced Book Card */}
               <div
-                className="flex flex-col items-center bg-gray-800 rounded-lg overflow-hidden 
-                shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 relative"
+                className="flex flex-col items-center bg-slate-800 rounded-lg
+                          overflow-hidden shadow-md hover:shadow-sky-700/40 
+                          hover:scale-105 transition-transform duration-300 relative"
               >
                 {/* Book Image */}
                 <img
@@ -87,24 +88,27 @@ export function Chapters() {
                   alt={book.title}
                   className="w-full h-80 object-cover rounded-t-lg"
                 />
+
                 {/* Hover Overlay */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 
-                  hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6"
+                  className="absolute inset-0 bg-gradient-to-t from-black 
+                              via-transparent to-transparent opacity-0
+                              hover:opacity-100 transition-opacity duration-300 
+                              flex items-end justify-center p-6"
                 >
-                  <p className="text-white text-base font-medium">
+                  <p className="text-slate-100 text-sm font-normal">
                     {book.description}
                   </p>
                 </div>
 
                 {/* Book Info */}
-                <div className="p-6 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-950 w-full rounded-b-lg text-center">
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-3">
+                <div className="p-6 bg-gradient-to-b from-slate-800 via-slate-900 to-slate-950 w-full rounded-b-lg text-center">
+                  <h3 className="text-xl font-bold text-sky-400 mb-3">
                     {book.title}
                   </h3>
                   <button
-                    className="mt-3 px-6 py-2 bg-yellow-500 hover:bg-yellow-400 rounded-full 
-                    text-black font-bold transition duration-300"
+                    className="mt-3 px-6 py-2 rounded-full bg-sky-600 hover:bg-sky-500
+                               text-white font-medium transition duration-300"
                   >
                     Learn More
                   </button>
@@ -117,4 +121,5 @@ export function Chapters() {
     </section>
   );
 }
+
 export default Chapters;

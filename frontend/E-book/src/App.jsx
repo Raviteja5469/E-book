@@ -8,17 +8,17 @@ import {SignIn,SignUp} from './components/Signin/Signin'
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/honors" element={<Honars />} />
-          <Route path="/product" element={<Product />} /> 
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+      <>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/honors" element={<Honars />} />
+            <Route path="/product" element={<Product />} /> 
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
+        </BrowserRouter>
+      </>
   )
 }
 

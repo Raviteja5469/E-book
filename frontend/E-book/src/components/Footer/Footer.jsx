@@ -1,193 +1,194 @@
 import React, { useState } from "react";
-import "./Footer.css";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
-function Footer() {
+export default function Footer() {
   const [email, setEmail] = useState("");
 
-  const handleNewsletterSubmit = (e) => {
+  const colors = {
+    background: "#000000", // black background
+    accent: "#6366F1",     // Tailwind's indigo-500
+    text: "#FFFFFF",
+    gray: "#9CA3AF"        // Tailwind's gray-400
+  };
+
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "Chapters", href: "#chapters" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "About Author", href: "#author" },
+    { label: "Contact", href: "#contact" }
+  ];
+
+  const resourceLinks = [
+    { label: "Blog", href: "#" },
+    { label: "Free Samples", href: "#" },
+    { label: "Worksheets", href: "#" },
+    { label: "FAQs", href: "#" },
+    { label: "Support", href: "#" }
+  ];
+
+  const policies = [
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+    { label: "Cookie Policy", href: "#" }
+  ];
+
+  const socialLinks = [
+    { Icon: Facebook, href: "#", label: "Visit our Facebook" },
+    { Icon: Twitter, href: "#", label: "Visit our Twitter" },
+    { Icon: Instagram, href: "#", label: "Visit our Instagram" },
+    { Icon: Linkedin, href: "#", label: "Visit our LinkedIn" },
+    { Icon: Youtube, href: "#", label: "Visit our YouTube" }
+  ];
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement newsletter logic here or call an API
-    alert("Thank you for subscribing!");
+    console.log("Email submitted:", email);
     setEmail("");
   };
 
   return (
-    <footer className="w-full bg-gray-900 text-white pt-10 pb-6 px-6 md:px-16 relative overflow-hidden animate-[fadeInUp_0.8s_ease-in-out]">
-      {/* Background radiating effect for advanced visual */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-20 w-[600px] h-[600px] rounded-full blur-3xl absolute -left-64 -top-64"></div>
-        <div className="bg-gradient-to-br from-green-500 via-teal-500 to-cyan-500 opacity-20 w-[600px] h-[600px] rounded-full blur-3xl absolute -right-64 -bottom-64"></div>
-      </div>
-
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        {/* Logo & name */}
-        <div className="md:col-span-1 flex flex-col items-start">
-          <div className="flex items-center space-x-2 mb-3 transform transition-transform duration-300 hover:scale-105">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-              <span className="text-xl font-bold">E</span>
+    <footer
+      className="pt-12 pb-8"
+      style={{ backgroundColor: colors.background, color: colors.text }}
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          {/* Brand & Social */}
+          <div className="lg:col-span-1 flex flex-col space-y-4">
+            {/* Brand */}
+            <div className="flex items-center space-x-2">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 shadow-lg">
+                <svg
+                  className="text-white w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  aria-label="E-book icon"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4h16a2 2 0 012 2v10a2 2 0 01-2 2H6.5A2.5 2.5 0 004 16.5V4z"
+                  />
+                </svg>
+              </div>
+              <span className="text-xl font-bold">My E-Book</span>
             </div>
-            <span className="text-xl font-semibold">E-book</span>
+            {/* Tagline */}
+            <p className="text-sm" style={{ color: colors.gray }}>
+              Unlock knowledge with our digital library—your gateway to endless learning!
+            </p>
+            {/* Social Icons */}
+            <div className="flex items-center space-x-4 mt-2">
+              {socialLinks.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="transition-transform duration-200 hover:scale-110"
+                >
+                  <Icon size={20} />
+                </a>
+              ))}
+            </div>
           </div>
-          <p className="text-sm text-gray-400">
-            Your one-stop destination for all digital reading needs.
-          </p>
-        </div>
 
-        {/* Navigation links */}
-        <div className="md:col-span-1">
-          <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-          <ul className="space-y-2">
-            <li>
-              <a 
-                href="#about" 
-                className="text-gray-300 hover:text-white transition-all duration-300 block"
-              >
-                About Us
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#contact" 
-                className="text-gray-300 hover:text-white transition-all duration-300 block"
-              >
-                Contact
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#privacy" 
-                className="text-gray-300 hover:text-white transition-all duration-300 block"
-              >
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#terms" 
-                className="text-gray-300 hover:text-white transition-all duration-300 block"
-              >
-                Terms of Service
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Social media icons */}
-        <div className="md:col-span-1">
-          <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-          <ul className="flex space-x-4">
-            <li>
-              <a 
-                href="#facebook" 
-                className="p-2 rounded-full bg-gray-800 hover:bg-indigo-600 transition-all duration-300 inline-block transform hover:-translate-y-1"
-                aria-label="Facebook Link"
-              >
-                <svg 
-                  width="20" 
-                  height="20" 
-                  fill="currentColor" 
-                  className="mx-auto text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M22.676 0H1.326C.594 0 0 .592 0 1.323v21.353C0 23.406.594 24 1.326 24h21.353c.73 0 1.321-.594 1.321-1.324V1.323C24 .592 23.406 0 22.676 0zm-2.845 6.584h-1.69c-1.326 0-1.582.63-1.582 1.555v2.04h3.164l-.413 3.205h-2.751V24h-3.309v-10.69H12V10.69h1.237V8.668c0-1.213.33-2.042 2.03-2.042h1.616v2.042z"></path>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#twitter" 
-                className="p-2 rounded-full bg-gray-800 hover:bg-blue-500 transition-all duration-300 inline-block transform hover:-translate-y-1"
-                aria-label="Twitter Link"
-              >
-                <svg 
-                  width="20" 
-                  height="20" 
-                  fill="currentColor" 
-                  className="mx-auto text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 4.557a9.9 9.9 0 0 1-2.828.775A4.932 4.932 0 0 0 23.336 3.4c-.951.555-2.003.952-3.127 1.168a4.92 4.92 0 0 0-8.391 4.482A13.957 13.957 0 0 1 1.671 3.149a4.905 4.905 0 0 0-.666 2.476c0 1.709.87 3.215 2.188 4.098a4.904 4.904 0 0 1-2.228-.616v.06c0 2.386 1.697 4.374 3.95 4.827a4.935 4.935 0 0 1-2.224.084 4.93 4.93 0 0 0 4.598 3.417 9.868 9.868 0 0 1-6.102 2.105c-.396 0-.79-.023-1.175-.068a13.945 13.945 0 0 0 7.548 2.213c9.057 0 14.01-7.514 14.01-14.01 0-.213-.005-.426-.014-.637A9.978 9.978 0 0 0 24 4.557z"></path>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#instagram" 
-                className="p-2 rounded-full bg-gray-800 hover:bg-pink-500 transition-all duration-300 inline-block transform hover:-translate-y-1"
-                aria-label="Instagram Link"
-              >
-                <svg 
-                  width="20" 
-                  height="20" 
-                  fill="currentColor" 
-                  className="mx-auto text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.92 4.92.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.92 4.92-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.225-.149-4.771-1.664-4.92-4.92-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.225 1.664-4.771 4.92-4.92 1.266-.058 1.646-.07 4.85-.07zm0-2.163C8.756 0 8.322.013 7.052.07 2.88.249.249 2.88.07 7.052.013 8.322 0 8.756 0 12s.013 3.678.07 4.948c.179 4.172 2.809 6.803 6.982 6.982C8.322 23.987 8.756 24 12 24s3.678-.013 4.948-.07c4.172-.179 6.803-2.809 6.982-6.982.057-1.27.07-1.704.07-4.948s-.013-3.678-.07-4.948C23.929 2.86 21.312.256 17.052.07 15.782.013 15.244 0 12 0z"></path>
-                  <path d="M12 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.099A3.937 3.937 0 1 1 15.937 12 3.937 3.937 0 0 1 12 15.937z"></path>
-                  <circle cx="18.406" cy="5.595" r="1.439"></circle>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a 
-                href="#linkedin" 
-                className="p-2 rounded-full bg-gray-800 hover:bg-blue-700 transition-all duration-300 inline-block transform hover:-translate-y-1"
-                aria-label="LinkedIn Link"
-              >
-                <svg 
-                  width="20" 
-                  height="20" 
-                  fill="currentColor" 
-                  className="mx-auto text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M4.98 3.5c0 1.381-1.119 2.5-2.49 2.5S0 4.881 0 3.5 1.119 1 2.49 1 4.98 2.119 4.98 3.5zM.48 8.75h4.999v14.75H.48zm7.52 0h4.78v2.01h.07c.666-1.258 2.292-2.58 4.72-2.58 5.044 0 5.97 3.318 5.97 7.63v8.69h-5v-7.69c0-1.83-.033-4.19-2.55-4.19-2.55 0-2.94 1.98-2.94 4.04v7.84H8V8.75z"></path>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact information & newsletter */}
-        <div className="md:col-span-1 flex flex-col space-y-4">
-          <h3 className="text-lg font-semibold">Contact Us</h3>
-          <address className="not-italic text-gray-300 text-sm">
-            <p>support@ebook.com</p>
-            <p>+1-234-567-890</p>
-            <p>123 E-Book St, Booksville</p>
-          </address>
+          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-2">Newsletter Signup</h3>
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+            <h3 className="text-lg font-semibold mb-4" style={{ color: colors.accent }}>
+              Quick Links
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="hover:opacity-80 transition-opacity"
+                    style={{ color: colors.gray }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: colors.accent }}>
+              Resources
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {resourceLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="hover:opacity-80 transition-opacity"
+                    style={{ color: colors.gray }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: colors.accent }}>
+              Stay Updated
+            </h3>
+            <p className="text-sm mb-4" style={{ color: colors.gray }}>
+              Subscribe for the latest updates.
+            </p>
+            <form onSubmit={handleSubmit} className="relative">
               <input
                 type="email"
-                placeholder="Enter your email..."
+                placeholder="Your email address"
+                className="w-full py-2 px-4 rounded-md text-sm outline-none"
+                style={{
+                  backgroundColor: "#2D3748",
+                  border: "1px solid #373F50",
+                  color: colors.text
+                }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full sm:w-auto flex-1 px-4 py-2 rounded-md text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-300"
                 required
+                aria-label="Email input for newsletter"
               />
               <button
                 type="submit"
-                className="mt-2 sm:mt-0 rounded-md bg-indigo-600 hover:bg-indigo-500 px-5 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="absolute right-2 top-1 bottom-1 px-4 bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium text-sm rounded-md flex items-center justify-center transition-colors hover:bg-gradient-to-r hover:from-indigo-600 hover:to-blue-600"
               >
-                Subscribe
+                Join
               </button>
             </form>
           </div>
         </div>
-      </div>
 
-      {/* Horizontal line */}
-      <div className="relative z-10 border-t border-gray-700 px-0 mb-4"></div>
-
-      {/* Copyright */}
-      <div className="relative z-10 text-sm text-center text-gray-500">
-        © 2025 E-Book. All rights reserved.
+        {/* Bottom Area */}
+        <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm" style={{ color: colors.gray }}>
+            &copy; {new Date().getFullYear()} My E-Book. All rights reserved.
+          </p>
+          <ul className="flex flex-wrap space-x-4 text-sm">
+            {policies.map((policy) => (
+              <li key={policy.label}>
+                <a
+                  href={policy.href}
+                  className="hover:opacity-80 transition-opacity"
+                  style={{ color: colors.gray }}
+                >
+                  {policy.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </footer>
   );
 }
-
-export default Footer;
