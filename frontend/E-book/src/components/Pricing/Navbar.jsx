@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/images/logo.webp";
+import { Link } from "react-router-dom";
+{/* functions */}
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,15 +16,17 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Benefits", href: "#benefits" },
-    { label: "Chapters", href: "#chapters" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Author", href: "#author" },
-    { label: "Achievements", href: "#achievements" },
-    { label: "Contact", href: "#contact" },
-  ];
+
+    const navLinks = [
+      { label: "Home", href: "#home" },
+      { label: "Benefits", href: "#Benifits" },
+      { label: "Chapters", href: "#chapters" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Author", href: "#author" },
+      { label: "Achievements", href: "#achievements" },
+      { label: "Contact", href: "#contact" },
+    ];
+
 
   return (
     <header
@@ -31,7 +35,8 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         {/* Logo Section */}
         <div className="flex items-center cursor-pointer transition-transform duration-300 hover:scale-110">
-          <img src={logo} alt="Book cover" className="w-10 h-10 rounded-lg shadow-md" />
+        <img src={logo} alt="Book cover" className="w-10 h-10 rounded-lg shadow-md"
+/>
           <span className="text-white text-xl font-semibold tracking-wide ml-3">
             E-Book
           </span>
@@ -49,7 +54,7 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="/Auth"
+            href="/sign-in"
             className="bg-cyan-500 text-white px-4 py-2 rounded-md shadow-md text-sm font-medium hover:bg-cyan-400 transition-all duration-300"
           >
             Sign In
@@ -89,8 +94,8 @@ function Navbar() {
               {item.label}
             </a>
           ))}
-          <a 
-            href="/Auth"
+          <a
+            href="/Signin"
             className="bg-cyan-500 text-white px-6 py-2 rounded-md shadow-md text-lg font-medium hover:bg-cyan-400 transition-all duration-300"
             onClick={() => setIsOpen(false)}
           >
