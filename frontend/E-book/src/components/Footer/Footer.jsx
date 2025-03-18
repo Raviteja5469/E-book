@@ -4,19 +4,12 @@ import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 export default function Footer() {
   const [email, setEmail] = useState("");
 
-  const colors = {
-    background: "#000000", // black background
-    accent: "#6366F1",     // Tailwind's indigo-500
-    text: "#FFFFFF",
-    gray: "#9CA3AF"        // Tailwind's gray-400
-  };
-
   const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Chapters", href: "#chapters" },
     { label: "Pricing", href: "#pricing" },
     { label: "About Author", href: "#author" },
-    { label: "Contact", href: "#contact" }
+    { label: "Contact", href: "#contact" },
   ];
 
   const resourceLinks = [
@@ -24,13 +17,13 @@ export default function Footer() {
     { label: "Free Samples", href: "#" },
     { label: "Worksheets", href: "#" },
     { label: "FAQs", href: "#" },
-    { label: "Support", href: "#" }
+    { label: "Support", href: "#" },
   ];
 
   const policies = [
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" }
+    { label: "Cookie Policy", href: "#" },
   ];
 
   const socialLinks = [
@@ -38,7 +31,7 @@ export default function Footer() {
     { Icon: Twitter, href: "#", label: "Visit our Twitter" },
     { Icon: Instagram, href: "#", label: "Visit our Instagram" },
     { Icon: Linkedin, href: "#", label: "Visit our LinkedIn" },
-    { Icon: Youtube, href: "#", label: "Visit our YouTube" }
+    { Icon: Youtube, href: "#", label: "Visit our YouTube" },
   ];
 
   const handleSubmit = (e) => {
@@ -48,20 +41,19 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      className="pt-12 pb-8"
-      style={{ backgroundColor: colors.background, color: colors.text }}
-    >
+    <footer className="pt-12 pb-8 bg-[#0F172A] text-[#F1F5F9] relative overflow-hidden">
+      {/* Cosmic Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#6B21A8]/20 via-[#2DD4BF]/10 to-[#0F172A] -z-10"></div>
+
       <div className="max-w-7xl mx-auto px-4">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           {/* Brand & Social */}
           <div className="lg:col-span-1 flex flex-col space-y-4">
-            {/* Brand */}
             <div className="flex items-center space-x-2">
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 shadow-lg">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#FBBF24] to-[#2DD4BF] shadow-lg">
                 <svg
-                  className="text-white w-6 h-6"
+                  className="text-[#0F172A] w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -75,20 +67,20 @@ export default function Footer() {
                   />
                 </svg>
               </div>
-              <span className="text-xl font-bold">My E-Book</span>
+              <span className="text-xl font-playfair font-bold text-[#FBBF24]">
+                My E-Book
+              </span>
             </div>
-            {/* Tagline */}
-            <p className="text-sm" style={{ color: colors.gray }}>
-              Unlock knowledge with our digital library—your gateway to endless learning!
+            <p className="text-sm font-inter text-[#F1F5F9]/80">
+              Your Cosmic Guide to Knowledge and Growth.
             </p>
-            {/* Social Icons */}
             <div className="flex items-center space-x-4 mt-2">
               {socialLinks.map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="transition-transform duration-200 hover:scale-110"
+                  className="transition-all duration-200 hover:scale-110 hover:text-[#2DD4BF]"
                 >
                   <Icon size={20} />
                 </a>
@@ -98,16 +90,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: colors.accent }}>
+            <h3 className="text-lg font-playfair font-semibold mb-4 text-[#FBBF24]">
               Quick Links
             </h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm font-inter">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:opacity-80 transition-opacity"
-                    style={{ color: colors.gray }}
+                    className="hover:text-[#2DD4BF] transition-colors duration-200"
+                    style={{ color: "#F1F5F9" }}
                   >
                     {link.label}
                   </a>
@@ -118,16 +110,16 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: colors.accent }}>
+            <h3 className="text-lg font-playfair font-semibold mb-4 text-[#FBBF24]">
               Resources
             </h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm font-inter">
               {resourceLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:opacity-80 transition-opacity"
-                    style={{ color: colors.gray }}
+                    className="hover:text-[#2DD4BF] transition-colors duration-200"
+                    style={{ color: "#F1F5F9" }}
                   >
                     {link.label}
                   </a>
@@ -138,22 +130,17 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: colors.accent }}>
+            <h3 className="text-lg font-playfair font-semibold mb-4 text-[#FBBF24]">
               Stay Updated
             </h3>
-            <p className="text-sm mb-4" style={{ color: colors.gray }}>
-              Subscribe for the latest updates.
+            <p className="text-sm font-inter mb-4 text-[#F1F5F9]/80">
+              Subscribe for exclusive e-book updates.
             </p>
             <form onSubmit={handleSubmit} className="relative">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full py-2 px-4 rounded-md text-sm outline-none"
-                style={{
-                  backgroundColor: "#2D3748",
-                  border: "1px solid #373F50",
-                  color: colors.text
-                }}
+                className="w-full py-2 px-4 rounded-md text-sm outline-none bg-[#1E293B] border border-[#2DD4BF]/20 text-[#F1F5F9] placeholder-[#F1F5F9]/50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -161,7 +148,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1 bottom-1 px-4 bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium text-sm rounded-md flex items-center justify-center transition-colors hover:bg-gradient-to-r hover:from-indigo-600 hover:to-blue-600"
+                className="absolute right-2 top-1 bottom-1 px-4 bg-[#FBBF24] text-[#0F172A] font-inter font-medium text-sm rounded-md flex items-center justify-center transition-all hover:bg-[#FBBF24]/90 hover:shadow-[#FBBF24]/40"
               >
                 Join
               </button>
@@ -170,17 +157,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom Area */}
-        <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm" style={{ color: colors.gray }}>
-            &copy; {new Date().getFullYear()} My E-Book. All rights reserved.
+        <div className="border-t border-[#2DD4BF]/20 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm font-inter text-[#F1F5F9]/80">
+            © {new Date().getFullYear()} My E-Book. All rights reserved.
           </p>
-          <ul className="flex flex-wrap space-x-4 text-sm">
+          <ul className="flex flex-wrap space-x-4 text-sm font-inter">
             {policies.map((policy) => (
               <li key={policy.label}>
                 <a
                   href={policy.href}
-                  className="hover:opacity-80 transition-opacity"
-                  style={{ color: colors.gray }}
+                  className="hover:text-[#2DD4BF] transition-colors duration-200"
+                  style={{ color: "#F1F5F9" }}
                 >
                   {policy.label}
                 </a>
@@ -189,6 +176,9 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
+      {/* Decorative Element */}
+      <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-[#2DD4BF]/20 rounded-full blur-3xl animate-[float_6s_infinite_alternate]" aria-hidden="true"></div>
     </footer>
   );
 }
