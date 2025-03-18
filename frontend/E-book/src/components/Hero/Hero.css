@@ -1,18 +1,27 @@
 @import "tailwindcss";
-        @keyframes float {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-20px); }
-        }
-        @keyframes floatReverse {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(20px); }
-        }
-        @keyframes floatIcons {
-          0% { transform: translateY(0) rotate(0deg); }
-          100% { transform: translateY(-30px) rotate(15deg); }
-        }
-        @keyframes floatIconsReverse {
-          0% { transform: translateY(0) rotate(0deg); }
-          100% { transform: translateY(30px) rotate(-15deg); }
-        }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+@keyframes floatReverse {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20px); }
+}
+
+/* Subtle Book Animation */
+.book-animation {
+  background: url('path-to-book-icon.png') no-repeat center; /* Add a book SVG or PNG */
+  animation: pageFlip 4s infinite ease-in-out;
+}
+
+@keyframes pageFlip {
+  0%, 100% { transform: scaleX(1) translateX(-50%); }
+  50% { transform: scaleX(1.05) translateX(-50%); }
+}
       
