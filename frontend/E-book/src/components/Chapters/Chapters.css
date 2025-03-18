@@ -1,0 +1,16 @@
+    /* @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    .slick-dots {
+    @apply mt-6 flex justify-center gap-2;
+    }
+
+    .slick-dots li button:before {
+    @apply hidden; /* Hide default dots */
+    /* }
+
+    @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+    } */ 
