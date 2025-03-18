@@ -1,96 +1,117 @@
-import React, { useState } from "react";
-import './Hero.css';
-import {
-  Book,
-  Feather,
-  Scroll,
-  Award,
-  Star,
-  Brain,
-  Lightbulb,
-  Key,
-  Rocket,
-} from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
 
-const iconList = [
-  Book, Feather, Scroll, Award, Star, Brain, Lightbulb, Key, Rocket
-];
+// E-book image (replace with your cover)
+const ebookCover = "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg";
 
 export default function Hero() {
-  const heroHeadingSmall = "LET'S UNLOCK YOUR POTENTIAL";
-  const heroHeadingMain = "Dive Into Knowledge, Master Perfection.";
+  const heroHeadingSmall = "DISCOVER YOUR PATH";
+  const heroHeadingMain = "Ride the Wave of Wisdom";
   const heroSubText =
-    "Discover a world of ideas, strategies, and stories. Your journey to success starts with a single page.";
+    "Embark on a journey of knowledge with our e-book—simple, profound, and yours to explore.";
 
-  const getRandomPosition = () => ({
-    top: `${Math.floor(Math.random() * 80) + 5}%`,
-    left: `${Math.floor(Math.random() * 80) + 5}%`,
-  });
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3, delayChildren: 0.4 },
+    },
+  };
 
-  const [icons, setIcons] = useState(
-    Array.from({ length: 10 }, (_, i) => ({
-      id: i,
-      Icon: iconList[i % iconList.length],
-      position: getRandomPosition(),
-    }))
-  );
+  const textVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
 
-  const handleIconClick = (id) => {
-    setIcons((prevIcons) =>
-      prevIcons.map((icon) =>
-        icon.id === id
-          ? {
-              ...icon,
-              Icon: iconList[Math.floor(Math.random() * iconList.length)],
-              position: getRandomPosition(),
-            }
-          : icon
-      )
-    );
+  const ebookVariants = {
+    initial: { opacity: 0, y: 100, scale: 0.8 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+    hover: { y: -10, rotate: 2, transition: { duration: 0.3 } },
   };
 
   return (
-    <section className="relative flex items-center justify-center min-h-screen px-6 py-16 bg-[#0F172A] text-[#F1F5F9] overflow-hidden">
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#6B21A8]/20 via-[#2DD4BF]/10 to-[#0F172A] z-0"></div>
+    <section className="relative min-h-screen flex items-center justify-center px-6 py-16 bg-[#0F172A] text-[#F1F5F9] overflow-hidden">
+      {/* Starry Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A] via-[#6B21A8]/20 to-[#2DD4BF]/10 -z-10"></div>
 
-      {/* Floating Icons */}
-      {icons.map(({ id, Icon, position }) => (
-        <div
-          key={id}
-          className="absolute transition-all duration-500 ease-in-out transform hover:scale-125 hover:rotate-12 cursor-pointer z-10 opacity-70"
-          style={position}
-          onClick={() => handleIconClick(id)}
-        >
-          <Icon color={Math.random() > 0.5 ? "#FBBF24" : "#2DD4BF"} size={40} />
-        </div>
-      ))}
-
-      {/* Decorative Elements */}
-      <div className="absolute top-16 left-12 w-24 h-24 bg-[#FBBF24]/30 rounded-full blur-2xl animate-[float_6s_infinite_alternate]" aria-hidden="true"></div>
-      <div className="absolute bottom-12 right-16 w-32 h-32 bg-[#2DD4BF]/30 rounded-full blur-2xl animate-[floatReverse_5s_infinite_alternate]" aria-hidden="true"></div>
+      {/* Cosmic Wave */}
+      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#2DD4BF]/30 to-transparent rounded-t-[50%] shadow-[0_-10px_30px_rgba(43,212,191,0.5)] animate-[waveSway_6s_infinite_ease-in-out]"></div>
 
       {/* Main Content */}
-      <div className="relative z-20 max-w-4xl flex flex-col items-center text-center space-y-8">
-        <span className="block text-sm uppercase tracking-widest text-[#F1F5F9]/80 font-inter">
+      <motion.div
+        className="relative z-20 max-w-5xl flex flex-col items-center text-center space-y-8"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        {/* Small Heading */}
+        <motion.span
+          className="text-sm uppercase tracking-widest text-[#F1F5F9]/80 font-inter"
+          variants={textVariants}
+        >
           {heroHeadingSmall}
-        </span>
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-playfair font-extrabold leading-tight drop-shadow-lg bg-gradient-to-r from-[#FBBF24] to-[#2DD4BF] bg-clip-text text-transparent">
-          {heroHeadingMain}
-        </h1>
-        <p className="max-w-2xl text-base sm:text-lg text-[#F1F5F9]/90 font-inter">
+        </motion.span>
+
+        {/* Main Heading */}
+        <motion.h1
+          className="text-5xl sm:text-6xl lg:text-7xl font-playfair font-extrabold text-[#F1F5F9] drop-shadow-md"
+          variants={textVariants}
+        >
+          {heroHeadingMain.split(" ").map((word, index) => (
+            <span key={index} className={index === 2 ? "bg-gradient-to-r from-[#FBBF24] to-[#2DD4BF] bg-clip-text text-transparent" : ""}>
+              {word}{" "}
+            </span>
+          ))}
+        </motion.h1>
+
+        {/* Subtext */}
+        <motion.p
+          className="max-w-xl text-base sm:text-lg text-[#F1F5F9]/90 font-inter"
+          variants={textVariants}
+        >
           {heroSubText}
-        </p>
-        <button
-          className="px-8 py-4 rounded-full bg-[#FBBF24] text-[#0F172A] font-inter font-semibold shadow-lg hover:shadow-[#FBBF24]/50 focus:outline-none focus:ring-4 focus:ring-[#2DD4BF]/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.button
+          className="px-8 py-4 rounded-full bg-[#FBBF24] text-[#0F172A] font-inter font-semibold shadow-md relative overflow-hidden group"
+          variants={textVariants}
+          whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(251, 191, 36, 0.7)" }}
           aria-label="Start Reading"
         >
-          Start Reading
-        </button>
-      </div>
+          <span className="relative z-10">Start Reading</span>
+          <span className="absolute inset-0 bg-[#2DD4BF] opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-full transform scale-0 group-hover:scale-150 origin-center"></span>
+        </motion.button>
+      </motion.div>
 
-      {/* Subtle Book Animation (CSS in Hero.css) */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-20 book-animation z-10 opacity-30" aria-hidden="true"></div>
+      {/* E-Book Reveal */}
+      <motion.div
+        className="absolute bottom-1/3 left-1/2 transform -translate-x-1/2 z-10"
+        initial="initial"
+        animate="animate"
+        variants={ebookVariants}
+        whileHover="hover"
+      >
+        <div className="w-48 h-64 sm:w-64 sm:h-80 bg-[#1E293B] rounded-lg shadow-[0_10px_40px_rgba(43,212,191,0.4)] border border-[#2DD4BF]/30 overflow-hidden">
+          <img
+            src={ebookCover}
+            alt="E-Book Cover"
+            className="w-full h-full object-cover rounded-lg transition-all duration-300 hover:brightness-110"
+          />
+        </div>
+      </motion.div>
+
+      {/* Minimal Starfield */}
+      <div className="absolute inset-0 -z-5">
+        <div className="w-1 h-1 bg-[#FBBF24] rounded-full absolute top-1/4 left-1/5 animate-[twinkle_3s_infinite]"></div>
+        <div className="w-1 h-1 bg-[#2DD4BF] rounded-full absolute bottom-1/3 right-1/4 animate-[twinkle_4s_infinite_delay-1s]"></div>
+      </div>
     </section>
   );
 }
