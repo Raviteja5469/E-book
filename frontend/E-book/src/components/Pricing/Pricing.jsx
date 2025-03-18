@@ -1,37 +1,44 @@
 import React from "react";
+import { CheckCircle2 } from "lucide-react";
 
 export function Pricing() {
   const pricingPlans = [
     {
-      name: "Basic Plan",
+      name: "Basic Reader",
       price: "$9",
-      features: ["5 Projects", "Basic Support", "1 User"],
-      gradient: "from-blue-500 to-blue-700",
-      buttonColor: "bg-blue-600 hover:bg-blue-500",
+      features: ["5 Chapter Previews", "Email Support", "1 Device Access"],
+      gradient: "from-[#6B21A8] to-[#2DD4BF]",
+      buttonColor: "bg-[#FBBF24] hover:bg-[#FBBF24]/90",
     },
     {
-      name: "Pro Plan",
+      name: "Pro Reader",
       price: "$29",
-      features: ["50 Projects", "Priority Support", "5 Users"],
-      gradient: "from-purple-500 to-purple-700",
-      buttonColor: "bg-purple-600 hover:bg-purple-500",
+      features: ["Full Book Access", "Priority Support", "3 Device Access"],
+      gradient: "from-[#6B21A8] to-[#2DD4BF]",
+      buttonColor: "bg-[#FBBF24] hover:bg-[#FBBF24]/90",
       popular: true,
     },
     {
-      name: "Enterprise Plan",
+      name: "Library Access",
       price: "$99",
-      features: ["Unlimited Projects", "Dedicated Support", "Unlimited Users"],
-      gradient: "from-yellow-500 to-yellow-700",
-      buttonColor: "bg-yellow-600 hover:bg-yellow-500",
+      features: ["Unlimited Books", "Dedicated Support", "Unlimited Devices"],
+      gradient: "from-[#6B21A8] to-[#2DD4BF]",
+      buttonColor: "bg-[#FBBF24] hover:bg-[#FBBF24]/90",
     },
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-900 via-gray-800 to-black py-16 px-6 lg:px-20 text-white">
+    <section className="bg-[#0F172A] py-16 px-6 lg:px-20 text-[#F1F5F9] relative overflow-hidden">
+      {/* Cosmic Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#6B21A8]/20 via-[#2DD4BF]/10 to-[#0F172A] -z-10"></div>
+
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <h2 className="text-4xl lg:text-5xl font-extrabold text-center text-yellow-500 mb-12">
-          Choose Your Plan
+        <h2 className="text-4xl lg:text-5xl font-playfair font-extrabold text-center text-[#F1F5F9] mb-12">
+          Unlock Your{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#2DD4BF]">
+            Reading Journey
+          </span>
         </h2>
 
         {/* Pricing Grid */}
@@ -39,38 +46,39 @@ export function Pricing() {
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className={`relative transform hover:scale-105 transition-transform duration-300 shadow-lg rounded-xl bg-gradient-to-br ${plan.gradient} p-6`}
+              className={`relative transform hover:scale-105 transition-all duration-300 rounded-xl bg-[#1E293B]/80 backdrop-blur-sm border border-[#2DD4BF]/20 p-6 ${
+                plan.popular ? "shadow-lg shadow-[#2DD4BF]/30" : ""
+              }`}
             >
+              {/* Gradient Overlay */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-20 rounded-xl`}
+              ></div>
+
               {/* Popular Tag */}
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-yellow-500 text-black px-3 py-1 text-sm font-bold rounded-bl-lg">
-                  Popular
+                <div className="absolute top-0 right-0 bg-[#FBBF24] text-[#0F172A] px-3 py-1 text-sm font-inter font-bold rounded-bl-lg">
+                  Most Popular
                 </div>
               )}
 
               {/* Plan Details */}
-              <h3 className="text-2xl font-bold text-white mb-4">{plan.name}</h3>
-              <p className="text-5xl font-extrabold text-white mb-6">
+              <h3 className="text-2xl font-playfair font-bold text-[#FBBF24] mb-4 relative z-10">
+                {plan.name}
+              </h3>
+              <p className="text-5xl font-extrabold text-[#F1F5F9] mb-6 relative z-10">
                 {plan.price}
-                <span className="text-xl font-normal">/month</span>
+                <span className="text-xl font-normal font-inter">/month</span>
               </p>
 
               {/* Features */}
-              <ul className="text-sm text-white mb-6">
+              <ul className="text-sm text-[#F1F5F9]/80 font-inter mb-6 relative z-10">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center mb-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-yellow-300 mr-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1.68-8.943l-2.12-2.12 1.414-1.414L8.32 6.114l4.95-4.95L14.684 2.8l-5.364 5.365L8.32 8.114z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <CheckCircle2
+                      size={20}
+                      className="text-[#2DD4BF] mr-2"
+                    />
                     {feature}
                   </li>
                 ))}
@@ -78,7 +86,7 @@ export function Pricing() {
 
               {/* CTA Button */}
               <button
-                className={`${plan.buttonColor} px-6 py-3 w-full rounded-lg text-white font-bold transition-all duration-300 shadow-lg`}
+                className={`${plan.buttonColor} px-6 py-3 w-full rounded-full text-[#0F172A] font-inter font-bold transition-all duration-300 shadow-md hover:shadow-[#FBBF24]/40`}
               >
                 Get Started
               </button>
@@ -86,6 +94,9 @@ export function Pricing() {
           ))}
         </div>
       </div>
+
+      {/* Decorative Element */}
+      <div className="absolute top-1/3 left-1/3 w-36 h-36 bg-[#2DD4BF]/20 rounded-full blur-3xl animate-[float_7s_infinite_alternate]" aria-hidden="true"></div>
     </section>
   );
 }
