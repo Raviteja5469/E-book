@@ -1,12 +1,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules"; // ✅ Fix here
-
-// Import Swiper styles
-import "swiper/css";  
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import "./Autors.css";
 
 export function Authors() {
   const authors = [
@@ -53,17 +51,26 @@ export function Authors() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-900 via-gray-800 to-black py-16 px-6 lg:px-20">
+    <section className="bg-[#0F172A] py-16 px-6 lg:px-20 text-[#F1F5F9] relative overflow-hidden">
+      {/* Cosmic Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#6B21A8]/20 via-[#2DD4BF]/10 to-[#0F172A] -z-10"></div>
+
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <h2 className="text-4xl lg:text-5xl font-extrabold text-center text-yellow-500 mb-12">
-          Meet the Authors
+        <h2 className="text-4xl lg:text-5xl font-playfair font-extrabold text-center text-[#F1F5F9] mb-12">
+          Behind the{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#2DD4BF]">
+            Pages
+          </span>
         </h2>
 
         {/* Swiper Slider for Authors */}
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          navigation
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000 }}
           loop={true}
@@ -78,8 +85,8 @@ export function Authors() {
           {authors.map((author, index) => (
             <SwiperSlide key={index}>
               <div
-                className="relative bg-gray-800 shadow-lg rounded-lg overflow-hidden 
-                transform hover:scale-105 transition-transform duration-300"
+                className="relative bg-[#1E293B]/80 shadow-lg rounded-lg overflow-hidden border border-[#2DD4BF]/20 backdrop-blur-sm
+                           transform hover:scale-105 hover:shadow-[#2DD4BF]/40 transition-all duration-300"
               >
                 {/* Author Photo */}
                 <img
@@ -89,21 +96,20 @@ export function Authors() {
                 />
                 {/* Author Info */}
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-playfair font-bold text-[#FBBF24] mb-2">
                     {author.name}
                   </h3>
-                  <p className="text-sm text-yellow-400 font-medium mb-3">
+                  <p className="text-sm text-[#2DD4BF] font-inter font-medium mb-3">
                     {author.title}
                   </p>
-                  <p className="text-sm text-gray-300 line-clamp-3">
+                  <p className="text-sm text-[#F1F5F9]/80 font-inter line-clamp-3">
                     {author.description}
                   </p>
                   {/* Social Icons */}
                   <div className="mt-4 flex justify-center space-x-4">
-                    {/* Social Media Link (Fake Links) */}
                     <a
                       href="#"
-                      className="text-gray-500 hover:text-yellow-500 transition"
+                      className="text-[#F1F5F9]/60 hover:text-[#FBBF24] transition-colors duration-300"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +122,7 @@ export function Authors() {
                     </a>
                     <a
                       href="#"
-                      className="text-gray-500 hover:text-yellow-400 transition"
+                      className="text-[#F1F5F9]/60 hover:text-[#FBBF24] transition-colors duration-300"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +139,14 @@ export function Authors() {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Navigation Arrows */}
+        <div className="swiper-button-prev !text-[#2DD4BF] after:!text-[#2DD4BF] hover:!text-[#FBBF24]"></div>
+        <div className="swiper-button-next !text-[#2DD4BF] after:!text-[#2DD4BF] hover:!text-[#FBBF24]"></div>
       </div>
+
+      {/* Decorative Element */}
+      <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-[#2DD4BF]/20 rounded-full blur-3xl animate-[float_7s_infinite_alternate]" aria-hidden="true"></div>
     </section>
   );
 }
