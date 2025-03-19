@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home";
 import React from "react";
 import Honars from "./pages/Honars/Honars";
 import Product from "./pages/Product/Product";
-import AuthForm from "./components/Auth";
+import AuthPage from "./components/Auth";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/honors" element={<Honars />} />
         <Route path="/product" element={<Product />} />
         {/* Use AuthForm instead of separate SignIn and SignUp */}
-        <Route path="/sign-in" element={<AuthForm />} />
+        <Route path="/Auth" element={<AuthPage />} />
       </Routes>
     </BrowserRouter>
   );
